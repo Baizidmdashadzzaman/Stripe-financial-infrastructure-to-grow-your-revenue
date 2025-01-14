@@ -27,16 +27,47 @@ class StripeController extends Controller
 
         try {
             // Create a bank account token
-            $token = Token::create([
-                'bank_account' => [
-                    'country' => 'DK',
-                    'currency' => 'dkk',
-                    'account_number' => 'DK1566951012331920',
-                    'routing_number' => 'LUNADK22',
-                    'account_holder_name' => 'VR Byen Aps',
-                    'account_holder_type' => 'individual',
-                ],
-            ]);
+
+            // $token = Token::create([
+            //     'bank_account' => [
+            //         'country' => 'DK',
+            //         'currency' => 'dkk',
+            //         'account_number' => 'DK5000400440116243',
+            //         'routing_number' => 'DABADKKK',
+            //         'account_holder_name' => 'VR Byen Aps',
+            //         'account_holder_type' => 'individual',
+            //     ],
+            // ]);
+            // $token = Token::create([
+            //     'bank_account' => [
+            //         'country' => 'DK',
+            //         'currency' => 'eur',
+            //         'account_number' => 'DK1566951012331920',
+            //         'routing_number' => 'LUNADK22',
+            //         'account_holder_name' => 'VR Byen Aps',
+            //         'account_holder_type' => 'individual',
+            //     ],
+            // ]);
+            // $token2 = Token::create([
+            //     'bank_account' => [
+            //         'country' => 'BD',
+            //         'currency' => 'bdt',
+            //         'account_number' => '',
+            //         'routing_number' => '225153640',
+            //         'account_holder_name' => 'VR Byen Aps',
+            //         'account_holder_type' => 'individual',
+            //     ],
+            // ]);
+            // $token = Token::create([
+            //     'bank_account' => [
+            //         'country' => 'BD',
+            //         'currency' => 'bdt',
+            //         'account_number' => '2302690061001',
+            //         'routing_number' => '225153640',
+            //         'account_holder_name' => 'VR Byen Aps',
+            //         'account_holder_type' => 'individual',
+            //     ],
+            // ]);
 
             return response()->json([
                 'success' => true,
