@@ -28,6 +28,28 @@ class StripeController extends Controller
         try {
             // Create a bank account token
 
+            $token = Token::create([
+                'bank_account' => [
+                    'country' => 'DK',
+                    'currency' => 'dkk',
+                    'account_number' => 'DK3820009028539905',
+                    'routing_number' => 'DABADKKK',
+                    'account_holder_name' => 'VR Byen Aps',
+                    'account_holder_type' => 'individual',
+                ],
+            ]);
+
+            // $token = Token::create([
+            //     'bank_account' => [
+            //         'country' => 'DK',
+            //         'currency' => 'dkk',
+            //         'account_number' => 'DK3820009028539905',
+            //         'routing_number' => 'NDEADKKK',
+            //         'account_holder_name' => 'VR Byen Aps',
+            //         'account_holder_type' => 'individual',
+            //     ],
+            // ]);
+
             // $token = Token::create([
             //     'bank_account' => [
             //         'country' => 'DK',
