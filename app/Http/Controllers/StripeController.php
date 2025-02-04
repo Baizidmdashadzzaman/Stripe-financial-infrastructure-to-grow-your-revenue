@@ -9,8 +9,45 @@ use Stripe\Token;
 use Stripe\Customer;
 use Stripe\PaymentIntent;
 
+use Stripe\Charge;
+
+use Stripe\Checkout\Session;
+use Stripe\Exception\ApiErrorException;
+
+
 class StripeController extends Controller
 {
+
+    public function showCheckout()
+    {
+        return view('stripe.stripe-card-payment');
+    }
+
+    public function processPayment(Request $request)
+    {
+        Stripe::setApiKey('sk_test_51QbliuP2kqOTkjJTpRyqqpDDSPmEdY6ZIE6XWxXVwZnLAXKpUSMNp7GhNKuVuRJWDr4hFoLwGHIQeKhDZKVzciAl004XiNJL3q');
+
+        $session = Session::create([
+            'line_items'  => [
+                [
+                    'price_data' => [
+                        'currency'     => 'gbp',
+                        'product_data' => [
+                            'name' => 'T-shirt',
+                        ],
+                        'unit_amount'  => 500,
+                    ],
+                    'quantity'   => 1,
+                ],
+            ],
+            'mode'        => 'payment',
+            'success_url' => route('success'),
+            'cancel_url'  => route('stripe.card.payment'),
+        ]);
+
+        return redirect()->away($session->url);
+    }
+
 
     public function validateBankAccount(Request $request)
     {
